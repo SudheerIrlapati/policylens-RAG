@@ -1,0 +1,5 @@
+question,policy,expected_answer,expected_page,type
+Is flood damage covered?,sample_home_policy,REPLACE: write the answer as the policy states it,REPLACE_PAGE,tricky
+What is the deductible for wind or hail damage?,sample_home_policy,REPLACE,REPLACE_PAGE,answerable
+How do I file a claim?,sample_home_policy,REPLACE,REPLACE_PAGE,answerable
+Does this policy cover my car rental in Europe?,sample_home_policy,,,out_of_scope
