@@ -54,11 +54,8 @@ def answer(question: str, policy: str | None = None, llm=None, docs: list[Docume
     if not docs:
         return {"answer": config.FALLBACK_ANSWER, "sources": []}
 
-    if llm is None:
-        from langchain_openai import ChatOpenAI
-
-        llm = ChatOpenAI(model=config.LLM_MODEL, temperature=0)
-
+       if llm is None:
+        llm = config.get_llm()
     reply = (PROMPT | llm).invoke({"context": format_context(docs), "question": question})
     text = reply.content.strip()
 
