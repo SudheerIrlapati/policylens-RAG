@@ -11,7 +11,7 @@ COLLECTION_NAME = "policies"
 
 # Free models: Groq for the LLM, a local Hugging Face model for embeddings.
 EMBED_MODEL = os.getenv("EMBED_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
-LLM_MODEL = os.getenv("LLM_MODEL", "llama-3.1-8b-instant")
+LLM_MODEL = os.getenv("LLM_MODEL", "openai/gpt-oss-20b")
 
 # Tune these on Day 2 and Day 9 and record what changes.
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "800"))

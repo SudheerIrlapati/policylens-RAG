@@ -54,7 +54,7 @@ def build_index(chunks: list[Document]) -> None:
     shutil.rmtree(config.CHROMA_DIR, ignore_errors=True)
     Chroma.from_documents(
         documents=chunks,
-        embedding=OpenAIEmbeddings(model=config.EMBED_MODEL),
+        embedding=config.get_embeddings(),
         collection_name=config.COLLECTION_NAME,
         persist_directory=config.CHROMA_DIR,
     )
