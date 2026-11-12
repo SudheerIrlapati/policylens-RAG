@@ -9,8 +9,9 @@ DATA_DIR = os.getenv("DATA_DIR", "data")
 CHROMA_DIR = os.getenv("CHROMA_DIR", "chroma_db")
 COLLECTION_NAME = "policies"
 
-EMBED_MODEL = os.getenv("EMBED_MODEL", "text-embedding-3-small")
-LLM_MODEL = os.getenv("LLM_MODEL", "gpt-4o-mini")
+# Free models: Groq for the LLM, a local Hugging Face model for embeddings.
+EMBED_MODEL = os.getenv("EMBED_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
+LLM_MODEL = os.getenv("LLM_MODEL", "llama-3.1-8b-instant")
 
 # Tune these on Day 2 and Day 9 and record what changes.
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "800"))
@@ -18,3 +19,17 @@ CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "120"))
 TOP_K = int(os.getenv("TOP_K", "4"))
 
 FALLBACK_ANSWER = "I can't find this in the policy."
+
+
+def get_embeddings():
+    """Embedding model used by both ingest and retrieval (they must match)."""
+    from langchain_huggingface import HuggingFaceEmbeddings
+
+    return HuggingFaceEmbeddings(model_name=EMBED_MODEL)
+
+
+def get_llm():
+    """Chat model that writes the answers. Reads GROQ_API_KEY from .env."""
+    from langchain_groq import ChatGroq
+
+    return ChatGroq(model=LLM_MODEL, temperature=0)
