@@ -9,11 +9,10 @@ from src import config
 @lru_cache(maxsize=1)
 def get_vectorstore():
     from langchain_chroma import Chroma
-    from langchain_openai import OpenAIEmbeddings
 
     return Chroma(
         collection_name=config.COLLECTION_NAME,
-        embedding_function=OpenAIEmbeddings(model=config.EMBED_MODEL),
+        embedding_function=config.get_embeddings(),
         persist_directory=config.CHROMA_DIR,
     )
 
