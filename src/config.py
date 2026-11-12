@@ -11,12 +11,12 @@ COLLECTION_NAME = "policies"
 
 # Free models: Groq for the LLM, a local Hugging Face model for embeddings.
 EMBED_MODEL = os.getenv("EMBED_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
-LLM_MODEL = os.getenv("LLM_MODEL", "openai/gpt-oss-20b")
+LLM_MODEL = os.getenv("LLM_MODEL", "openai/gpt-oss-120b")
 
 # Tune these on Day 2 and Day 9 and record what changes.
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "800"))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "120"))
-TOP_K = int(os.getenv("TOP_K", "4"))
+TOP_K = int(os.getenv("TOP_K", "6"))
 
 FALLBACK_ANSWER = "I can't find this in the policy."
 

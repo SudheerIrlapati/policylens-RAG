@@ -25,7 +25,7 @@ def retrieve(question: str, policy: str | None = None, k: int = config.TOP_K) ->
     """
     vs = get_vectorstore()
     search_filter = {"policy": policy} if policy else None
-    return vs.similarity_search(question, k=k, filter=search_filter)
+    return vs.max_marginal_relevance_search(question, k=k, fetch_k=20, filter=search_filter)
 
 
 def list_policies() -> list[str]:

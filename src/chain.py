@@ -14,6 +14,7 @@ Answer the question using ONLY the policy excerpts in the context.
 Rules:
 - After each fact, cite its source like [policy-name p.3].
 - Mention exclusions, limits or conditions if the context has them.
+- If the excerpts come from more than one policy, answer for each policy separately and name it. Never combine numbers from different policies.
 - If the context does not contain the answer, reply exactly: "{config.FALLBACK_ANSWER}"
 - Never use outside knowledge and never guess.
 - Keep the answer short and in plain English."""
