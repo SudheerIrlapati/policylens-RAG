@@ -49,7 +49,6 @@ def split_docs(
 def build_index(chunks: list[Document]) -> None:
     """Embed chunks and save them to a fresh ChromaDB folder."""
     from langchain_chroma import Chroma
-    from langchain_openai import OpenAIEmbeddings
 
     # Rebuild from scratch so re-running ingest never creates duplicates.
     shutil.rmtree(config.CHROMA_DIR, ignore_errors=True)
